@@ -1,0 +1,19 @@
+{
+  "ignore": {
+    "cargo": [
+      "RUSTSEC-2020-0071",
+      "RUSTSEC-2020-0159"
+    ],
+    "npm": [
+      "https://github.com/advisories/GHSA-566m-qj78-rww5",
+      "https://github.com/advisories/GHSA-93q8-gq69-wqmw",
+      "https://github.com/advisories/GHSA-w5p7-h5w8-2hfq",
+      "https://github.com/advisories/GHSA-w8qv-6jwh-64r5",
+      "https://github.com/advisories/GHSA-whgm-jr23-g3j9",
+      "https://github.com/advisories/GHSA-ww39-953v-wcq6",
+      "https://github.com/advisories/GHSA-cj88-88mr-972w",
+      "https://github.com/advisories/GHSA-4wf5-vphf-c2xc",
+      "https://github.com/advisories/GHSA-mhxj-85r3-2x55"
+    ]
+  }
+}
