@@ -50,7 +50,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-mhxj-85r3-2x55",
         "issue": null
-      }
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-36jr-mh4h-2g58",
+        "issue": null
+      },
     ],
     "comments": [
       "All npm advisories except GHSA-mhxj-85r3-2x55 are for regular expression denial of service vulnerabilities"
