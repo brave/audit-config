@@ -6,8 +6,7 @@
         "issue": "https://github.com/brave/brave-browser/issues/20568"
       },
       {
-        "advisory": "RUSTSEC-2020-0159",
-        "issue": null
+        "advisory": "RUSTSEC-2020-0159"
       },
       {
         "advisory": "RUSTSEC-2021-0139",
@@ -20,40 +19,31 @@
         "issue": "https://github.com/brave/brave-browser/issues/18662"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-93q8-gq69-wqmw",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-93q8-gq69-wqmw"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-w5p7-h5w8-2hfq",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-w5p7-h5w8-2hfq"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-w8qv-6jwh-64r5",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-w8qv-6jwh-64r5"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-whgm-jr23-g3j9",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-whgm-jr23-g3j9"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-ww39-953v-wcq6",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-ww39-953v-wcq6"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-cj88-88mr-972w",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-cj88-88mr-972w"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-4wf5-vphf-c2xc",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-4wf5-vphf-c2xc"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-mhxj-85r3-2x55",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-mhxj-85r3-2x55"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-36jr-mh4h-2g58",
-        "issue": null
+        "advisory": "https://github.com/advisories/GHSA-36jr-mh4h-2g58"
       }
     ],
     "comments": [
