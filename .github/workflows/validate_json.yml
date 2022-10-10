@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'config*.json'
+  pull_request:
 
 jobs:
   verify-json-validation:
