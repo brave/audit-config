@@ -1,9 +1,6 @@
 name: Validate config
 
 on: 
-  push:
-    paths:
-      - 'config*.json'
   pull_request:
 
 jobs:
@@ -11,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Validate JSON
+      - name: Validate config
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
           INPUT_SCHEMA: /config.schema.json
