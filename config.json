@@ -53,6 +53,9 @@
       },
       {
         "advisory": "https://github.com/advisories/GHSA-hhq3-ff78-jv3g"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-w573-4hg7-7wgq"
       }
     ],
     "comments": [
