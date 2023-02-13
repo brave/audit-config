@@ -62,6 +62,9 @@
       },
       {
         "advisory": "https://github.com/advisories/GHSA-rc47-6667-2j5j"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-8x6c-cv3v-vp6g"
       }
     ],
     "comments": [
