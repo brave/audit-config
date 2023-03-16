@@ -73,6 +73,10 @@
       },
       {
         "advisory": "https://github.com/advisories/GHSA-8x6c-cv3v-vp6g"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-p8p7-x288-28g6",
+        "issue": "https://github.com/brave/brave-browser/issues/29120"
       }
     ],
     "comments": [
