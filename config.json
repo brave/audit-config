@@ -77,10 +77,14 @@
       {
         "advisory": "https://github.com/advisories/GHSA-p8p7-x288-28g6",
         "issue": "https://github.com/brave/brave-browser/issues/29120"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-f9xv-q969-pqx4",
+        "issue": "https://github.com/brave/brave-browser/issues/29962"
       }
     ],
     "comments": [
-      "All npm advisories except GHSA-mhxj-85r3-2x55 are for regular expression denial of service vulnerabilities"
+      "All npm advisories except GHSA-mhxj-85r3-2x55 and GHSA-f9xv-q969-pqx4 are for regular expression denial of service vulnerabilities"
     ]
   }
 }
