@@ -93,6 +93,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-j8xg-fqg3-53r7",
         "issue": "https://github.com/brave/brave-browser/issues/31351"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-72xf-g2v4-qvf3",
+        "issue": "https://github.com/brave/brave-browser/issues/31530"
       }
     ],
     "comments": [
