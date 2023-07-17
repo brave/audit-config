@@ -23,6 +23,10 @@
       {
         "advisory": "RUSTSEC-2022-0092",
         "issue": "https://github.com/brave/brave-browser/issues/30118"
+      },
+      {
+        "advisory": "RUSTSEC-2023-0018",
+        "issue": "https://github.com/brave/brave-browser/issues/31660"
       }
     ],
     "npm": [
