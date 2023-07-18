@@ -1,0 +1,62 @@
+name: Open PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      advisory:
+        required: true
+        description: Advisory identifier
+      issue:
+        required: true
+        description: Associated issue
+
+env:
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  open-pr:
+    name: 
+    runs-on: ubuntu-latest
+    env:
+      advisory: ${{ inputs.advisory }}
+      issue: ${{ inputs.issue }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3.5.3
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - name: open pr
+        run: |
+          # Fail fast
+          shopt -s inherit_errexit
+          set -xeEo pipefail
+
+          # Validate advisory format
+          case "${advisory:?}" in
+              https://github.com/advisories/GHSA-*) ty=npm;;
+              RUSTSEC-*) ty=cargo;;
+              *) echo "ERROR: invalid advisory format" >&2; exit 2;;
+          esac
+
+          # Validate issue format
+          case "${issue:?}" in
+              https://github.com/brave/brave-browser/issues/*) ;;
+              *) echo "ERROR: invalid issue format" >&2; exit 2;;
+          esac
+
+          # Add the new entry to config.json
+          echo "$(jq -r ".ignore.${ty:?} += [{ \"advisory\": \"$advisory\", \"issue\": \"$issue\" }]" config.json)" >config.json
+
+          # Create a branch with the change and a PR based on it
+          branch="ignore-${advisory##*/}"
+          sha="$(gh api "/repos/$GITHUB_REPOSITORY/git/refs/heads/${DEFAULT_BRANCH:?}"|jq -r .object.sha)"
+          gh api --method POST "/repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/${branch:?}" -f sha="${sha:?}"
+          gh api --method PUT "/repos/$GITHUB_REPOSITORY/contents/config.json" \
+              --field branch="$branch" \
+              --field content="$(base64 -w0 <config.json)" \
+              --field encoding="base64" \
+              --field message="Ignore $advisory" \
+              --field sha="$(git rev-parse --verify "$DEFAULT_BRANCH:config.json")"
+          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory" -b "Resolves ${issue:?}"
+
