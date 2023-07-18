@@ -1,4 +1,4 @@
-name: PR open
+name: Manage PR
 
 on:
   pull_request:
