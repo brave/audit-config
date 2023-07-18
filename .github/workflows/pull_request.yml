@@ -1,0 +1,23 @@
+name: PR open
+
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign author to PR
+        uses: technote-space/assign-author@v1
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR description
+        env:
+          description: ${{ github.event.pull_request.body }}
+        run: |
+          if ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
+              echo "ERROR: Failed to find an issue closing keyword in the pull request description" >&2
+              exit 2
+          fi
