@@ -17,7 +17,7 @@ jobs:
         env:
           description: ${{ github.event.pull_request.body }}
         run: |
-          if ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/\S+/|#)\d+' <<<"${description:?}"; then
+          if ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
               echo "ERROR: Failed to find an issue closing keyword in the pull request description" >&2
               exit 2
           fi
