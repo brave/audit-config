@@ -109,6 +109,9 @@
       {
         "advisory": "https://github.com/advisories/GHSA-72xf-g2v4-qvf3",
         "issue": "https://github.com/brave/brave-browser/issues/31530"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-4q6p-r6v2-jvc5"
       }
     ],
     "comments": [
