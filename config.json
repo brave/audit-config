@@ -112,6 +112,10 @@
       },
       {
         "advisory": "https://github.com/advisories/GHSA-4q6p-r6v2-jvc5"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
+        "issue": "https://github.com/brave/brave-browser/issues/33384"
       }
     ],
     "comments": [
