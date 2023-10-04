@@ -112,10 +112,16 @@
       },
       {
         "advisory": "https://github.com/advisories/GHSA-4q6p-r6v2-jvc5"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
+        "issue": "https://github.com/brave/brave-browser/issues/33384"
       }
     ],
     "comments": [
-      "All npm advisories except GHSA-mhxj-85r3-2x55 are for regular expression denial of service vulnerabilities"
+      "GHSA-mhxj-85r3-2x55 is DoS detecting file type of a malformed MKV file"
+    , "GHSA-7fh5-64p2-3v2j is a defect of npm module 'postcss' depended on by storybook which I stuggle to believe could ever have any security implications"
+    , "All other npm advisories are for regular expression denial of service vulnerabilities"
     ]
   }
 }
