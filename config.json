@@ -120,6 +120,7 @@
       {
         "advisory": "https://github.com/advisories/GHSA-78xj-cgh5-2h22",
         "issue": "https://github.com/brave/brave-browser/issues/35926"
+      }
     ],
     "comments": [
       "GHSA-mhxj-85r3-2x55 is DoS detecting file type of a malformed MKV file"
