@@ -156,9 +156,14 @@
       {
         "advisory": "https://github.com/advisories/GHSA-3xgq-45jj-v275",
         "issue": "https://github.com/brave/brave-browser/issues/42340"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-2mhj-xmf4-pr8m",
+        "issue": "https://github.com/brave/brave-browser/issues/42669"
       }
     ],
     "comments": [
+      "GHSA-2mhj-xmf4-pr8m affects versions 1.95.6 and 1.95.7, which we don't use, but the GitHub advisory incorrectly states that all versions are vulnerable",
       "GHSA-mhxj-85r3-2x55 is DoS detecting file type of a malformed MKV file",
       "GHSA-7fh5-64p2-3v2j is a defect of npm module 'postcss' depended on by storybook which I stuggle to believe could ever have any security implications",
       "GHSA-78xj-cgh5-2h22 is failing to distinguish public/private ip addresses; we believe our use is not vulnerable",
