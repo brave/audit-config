@@ -156,6 +156,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-3xgq-45jj-v275",
         "issue": "https://github.com/brave/brave-browser/issues/42340"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-2mhj-xmf4-pr8m",
+        "issue": "https://github.com/brave/brave-browser/issues/42669"
       }
     ],
     "comments": [
