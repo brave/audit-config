@@ -16,87 +16,8 @@
     ],
     "npm": [
       {
-        "advisory": "https://github.com/advisories/GHSA-566m-qj78-rww5",
-        "issue": "https://github.com/brave/brave-browser/issues/18662"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-93q8-gq69-wqmw"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-w5p7-h5w8-2hfq"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-w8qv-6jwh-64r5"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-whgm-jr23-g3j9"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-ww39-953v-wcq6"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-cj88-88mr-972w"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-4wf5-vphf-c2xc"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-mhxj-85r3-2x55"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-36jr-mh4h-2g58"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-f8q6-p94x-37v3"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-3rfm-jhwj-7488"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-hhq3-ff78-jv3g"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-w573-4hg7-7wgq"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-9vvw-cc9w-f27h"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-rc47-6667-2j5j"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-8x6c-cv3v-vp6g"
-      },
-      {
         "advisory": "https://github.com/advisories/GHSA-p8p7-x288-28g6",
         "issue": "https://github.com/brave/brave-browser/issues/29120"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-f9xv-q969-pqx4",
-        "issue": "https://github.com/brave/brave-browser/issues/29962"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
-        "issue": "https://github.com/brave/brave-browser/issues/31241"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-j8xg-fqg3-53r7",
-        "issue": "https://github.com/brave/brave-browser/issues/31351"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-72xf-g2v4-qvf3",
-        "issue": "https://github.com/brave/brave-browser/issues/31530"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-4q6p-r6v2-jvc5"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-7fh5-64p2-3v2j",
-        "issue": "https://github.com/brave/brave-browser/issues/33384"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-78xj-cgh5-2h22",
-        "issue": "https://github.com/brave/brave-browser/issues/35926"
       },
       {
         "advisory": "https://github.com/advisories/GHSA-hhhv-q57g-882q",
@@ -119,24 +40,10 @@
         "issue": "https://github.com/brave/brave-browser/issues/40668"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-9wv6-86v2-598j",
-        "issue": "https://github.com/brave/brave-browser/issues/40946"
-      },
-      {
         "advisory": "https://github.com/advisories/GHSA-3xgq-45jj-v275",
         "issue": "https://github.com/brave/brave-browser/issues/42340"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-2mhj-xmf4-pr8m",
-        "issue": "https://github.com/brave/brave-browser/issues/42669"
       }
     ],
-    "comments": [
-      "GHSA-2mhj-xmf4-pr8m affects versions 1.95.6 and 1.95.7, which we don't use, but the GitHub advisory incorrectly states that all versions are vulnerable",
-      "GHSA-mhxj-85r3-2x55 is DoS detecting file type of a malformed MKV file",
-      "GHSA-7fh5-64p2-3v2j is a defect of npm module 'postcss' depended on by storybook which I stuggle to believe could ever have any security implications",
-      "GHSA-78xj-cgh5-2h22 is failing to distinguish public/private ip addresses; we believe our use is not vulnerable",
-      "All other npm advisories are for regular expression denial of service vulnerabilities"
-    ]
+    "comments": []
   }
 }
