@@ -2,47 +2,16 @@
   "ignore": {
     "cargo": [
       {
-        "advisory": "RUSTSEC-2020-0071",
-        "issue": "https://github.com/brave/brave-browser/issues/20568"
-      },
-      {
-        "advisory": "RUSTSEC-2020-0159"
-      },
-      {
         "advisory": "RUSTSEC-2021-0139",
         "issue": "https://github.com/brave/brave-browser/issues/25711"
-      },
-      {
-        "advisory": "RUSTSEC-2021-0145",
-        "issue": "https://github.com/brave/brave-browser/issues/32142"
-      },
-      {
-        "advisory": "RUSTSEC-2021-0146",
-        "issue": "https://github.com/brave/brave-browser/issues/28228"
-      },
-      {
-        "advisory": "RUSTSEC-2023-0019",
-        "issue": "https://github.com/brave/brave-browser/issues/29079"
       },
       {
         "advisory": "RUSTSEC-2022-0092",
         "issue": "https://github.com/brave/brave-browser/issues/30118"
       },
       {
-        "advisory": "RUSTSEC-2023-0018",
-        "issue": "https://github.com/brave/brave-browser/issues/31660"
-      },
-      {
-        "advisory": "RUSTSEC-2022-0093",
-        "issue": "https://github.com/brave/brave-browser/issues/32236"
-      },
-      {
         "advisory": "RUSTSEC-2023-0081",
         "issue": "https://github.com/brave/brave-browser/issues/36616"
-      },
-      {
-        "advisory": "RUSTSEC-2024-0344",
-        "issue": "https://github.com/brave/brave-browser/issues/39142"
       }
     ],
     "npm": [
