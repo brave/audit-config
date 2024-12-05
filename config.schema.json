@@ -15,10 +15,14 @@
               },
               "issue": {
                 "type": "string"
+              },
+              "comment": {
+                "type": "string"
               }
             },
             "required": [
-              "advisory"
+              "advisory",
+              "issue"
             ],
             "additionalProperties": false
           }
@@ -33,10 +37,14 @@
               },
               "issue": {
                 "type": "string"
+              },
+              "comment": {
+                "type": "string"
               }
             },
             "required": [
-              "advisory"
+              "advisory",
+              "issue"
             ],
             "additionalProperties": false
           }
