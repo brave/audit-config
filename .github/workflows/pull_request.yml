@@ -16,8 +16,10 @@ jobs:
       - name: Validate PR description
         env:
           description: ${{ github.event.pull_request.body }}
+          pr_title: ${{ github.event.pull_request.title }}
         run: |
-          if ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
+          if [[ "${pr_title:?}" == Ignore* ]] &&\
+             ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
               echo "ERROR: Failed to find an issue closing keyword in the pull request description" >&2
               exit 2
           fi
