@@ -15,6 +15,9 @@
               },
               "issue": {
                 "type": "string"
+              },
+              "comment": {
+                "type": "string"
               }
             },
             "required": [
@@ -32,6 +35,9 @@
                 "type": "string"
               },
               "issue": {
+                "type": "string"
+              },
+              "comment": {
                 "type": "string"
               }
             },
