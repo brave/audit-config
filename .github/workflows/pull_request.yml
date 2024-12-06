@@ -2,7 +2,7 @@ name: Manage PR
 
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, edited, synchronize]
 
 jobs:
   assign:
@@ -11,6 +11,7 @@ jobs:
       - name: Assign author to PR
         uses: technote-space/assign-author@9558557c5c4816f38bd06176fbc324ba14bb3160 # v1.6.2
   validate:
+    if: startsWith(github.event.pull_request.title, 'Ignore')
     runs-on: ubuntu-latest
     steps:
       - name: Validate PR description
@@ -18,8 +19,7 @@ jobs:
           description: ${{ github.event.pull_request.body }}
           pr_title: ${{ github.event.pull_request.title }}
         run: |
-          if [[ "${pr_title:?}" == Ignore* ]] &&\
-             ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
+          if ! grep -iP '(close(s|d)?|fix(es|ed)?|resolve(s|d)?)\s+(https://github.com/[^/]+/[^/]+/issues/|#)\d+' <<<"${description:?}"; then
               echo "ERROR: Failed to find an issue closing keyword in the pull request description" >&2
               exit 2
           fi
