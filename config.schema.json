@@ -21,8 +21,7 @@
               }
             },
             "required": [
-              "advisory",
-              "issue"
+              "advisory"
             ],
             "additionalProperties": false
           }
@@ -43,8 +42,7 @@
               }
             },
             "required": [
-              "advisory",
-              "issue"
+              "advisory"
             ],
             "additionalProperties": false
           }

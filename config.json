@@ -42,6 +42,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-3xgq-45jj-v275",
         "issue": "https://github.com/brave/brave-browser/issues/42340"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-rhx6-c78j-4q9w",
+        "issue": "https://github.com/brave/brave-browser/issues/42721"
       }
     ],
     "comments": []
