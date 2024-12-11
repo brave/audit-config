@@ -5,10 +5,13 @@ on:
     inputs:
       advisory:
         required: true
-        description: Advisory identifier
+        description: Advisory ID, or URL
       issue:
         required: true
-        description: Associated issue
+        description: Issue URL
+      comment:
+        required: false
+        description: Comment (optional)
 
 env:
   DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
@@ -21,6 +24,7 @@ jobs:
     env:
       advisory: ${{ inputs.advisory }}
       issue: ${{ inputs.issue }}
+      comment: ${{ inputs.comment }}
     steps:
       - name: checkout
         uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
@@ -29,34 +33,55 @@ jobs:
       - name: open pr
         run: |
           # Fail fast
-          shopt -s inherit_errexit
           set -xeEo pipefail
+          shopt -s inherit_errexit
 
-          # Validate advisory format
+          to_json() { printf "%s" "$*"|jq -Rsa .; }
+
           case "${advisory:?}" in
-              https://github.com/advisories/GHSA-*) ty=npm;;
-              RUSTSEC-*) ty=cargo;;
+              https://github.com/advisories/GHSA-*|GHSA-*)
+                  ty=npm
+                  advisory_id="${advisory##*/}"
+                  advisory_url="${advisory%/GHSA-*}/${advisory_id:?}"
+                  advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
+                  ;;
+              https://rustsec.org/advisories/RUSTSEC-*|RUSTSEC-*)
+                  ty=cargo
+                  advisory_id="${advisory##*/}"
+                  advisory_url="${advisory%/RUSTSEC-*}/${advisory_id:?}"
+                  advisory_json='"advisory": '"$(to_json "${advisory_id:?}")"
+                  ;;
               *) echo "ERROR: invalid advisory format" >&2; exit 2;;
           esac
 
-          # Validate issue format
           case "${issue:?}" in
-              https://github.com/brave/brave-browser/issues/*) ;;
+              https://github.com/brave/*/issues/*|[0-9]*)
+                  issue_id="${issue##*/}"
+                  issue_url="${issue%/[0-9]*}/${issue_id:?}"
+                  issue_json='"issue": '"$(to_json "${issue_url:?}")"
+                  ;;
               *) echo "ERROR: invalid issue format" >&2; exit 2;;
           esac
 
-          # Add the new entry to config.json
-          echo "$(jq -r ".ignore.${ty:?} += [{ \"advisory\": \"$advisory\", \"issue\": \"$issue\" }]" config.json)" >config.json
+          case "$(tr -d '[:space:]' <<<"$comment")" in
+              "") ;;
+              *) comment_json=', "comment": '"$(to_json "$comment")";;
+          esac
 
-          # Create a branch with the change and a PR based on it
-          branch="ignore-${advisory##*/}"
-          sha="$(gh api "/repos/$GITHUB_REPOSITORY/git/refs/heads/${DEFAULT_BRANCH:?}"|jq -r .object.sha)"
+          json="{ ${advisory_json:?}, ${issue_json:?} $comment_json }"
+
+          # Update config.json
+          echo "$(jq -r ".ignore.${ty:?} += [${json:?}]" config.json)" >config.json
+
+          # Create a branch with the updated config.json and a PR based on it
+          branch="ignore-$advisory_id"
+          sha="$(gh api "/repos/${GITHUB_REPOSITORY:?}/git/refs/heads/${DEFAULT_BRANCH:?}"|jq -r .object.sha)"
           gh api --method POST "/repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/${branch:?}" -f sha="${sha:?}"
           gh api --method PUT "/repos/$GITHUB_REPOSITORY/contents/config.json" \
               --field branch="$branch" \
               --field content="$(base64 -w0 <config.json)" \
               --field encoding="base64" \
-              --field message="Ignore $advisory" \
+              --field message="Ignore $advisory_id" \
               --field sha="$(git rev-parse --verify "$DEFAULT_BRANCH:config.json")"
-          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory" -b "Resolves ${issue:?}"
+          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory_id" -b "Resolves ${issue_url:?}"
 
