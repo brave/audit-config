@@ -5,10 +5,10 @@ on:
     inputs:
       advisory:
         required: true
-        description: Advisory ID, or URL
+        description: Advisory ID, or URL (e.g. GHSA-123, or https://github.com/advisories/GHSA-123)
       issue:
         required: true
-        description: Issue URL
+        description: Issue URL (e.g. https://github.com/brave/brave-browser/issues/1)
       comment:
         required: false
         description: Comment (optional)
@@ -42,13 +42,13 @@ jobs:
               https://github.com/advisories/GHSA-*|GHSA-*)
                   ty=npm
                   advisory_id="${advisory##*/}"
-                  advisory_url="${advisory%/GHSA-*}/${advisory_id:?}"
+                  advisory_url="https://github.com/advisories/${advisory_id:?}"
                   advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
                   ;;
               https://rustsec.org/advisories/RUSTSEC-*|RUSTSEC-*)
                   ty=cargo
                   advisory_id="${advisory##*/}"
-                  advisory_url="${advisory%/RUSTSEC-*}/${advisory_id:?}"
+                  advisory_url="https://rustsec.org/advisories/${advisory_id:?}"
                   advisory_json='"advisory": '"$(to_json "${advisory_id:?}")"
                   ;;
               *) echo "ERROR: invalid advisory format" >&2; exit 2;;
