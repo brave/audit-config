@@ -50,6 +50,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-rhx6-c78j-4q9w",
         "issue": "https://github.com/brave/brave-browser/issues/42721"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-mwcw-c2x4-8c55",
+        "issue": "https://github.com/brave/brave-browser/issues/42784"
       }
     ],
     "comments": []
