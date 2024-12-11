@@ -51,11 +51,8 @@ jobs:
           advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
 
           case "${issue:?}" in
-              https://github.com/brave/*/issues/*|[0-9]*)
-                  issue_id="${issue##*/}"
-                  issue_url="${issue%/[0-9]*}/${issue_id:?}"
-                  issue_json='"issue": '"$(to_json "${issue_url:?}")"
-                  ;;
+              https://github.com/brave/*/issues/[0-9]*)
+                  issue_json='"issue": '"$(to_json "${issue:?}")";;
               *) echo "ERROR: invalid issue format" >&2; exit 2;;
           esac
 
@@ -79,5 +76,5 @@ jobs:
               --field encoding="base64" \
               --field message="Ignore $advisory_id" \
               --field sha="$(git rev-parse --verify "$DEFAULT_BRANCH:config.json")"
-          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory_id" -b "Resolves ${issue_url:?}"
+          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory_id" -b "Resolves $issue"
 
