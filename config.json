@@ -54,6 +54,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-mwcw-c2x4-8c55",
         "issue": "https://github.com/brave/brave-browser/issues/42784"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-968p-4wvh-cqc8",
+        "issue": "https://github.com/brave/brave-browser/issues/44619",
+        "comment": "ReDoS"
       }
     ],
     "comments": []
