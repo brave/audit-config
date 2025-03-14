@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       advisory:
-        required: true
+        required: false
         description: Advisory ID, or URL (e.g. GHSA-123, or https://github.com/advisories/GHSA-123)
       issue:
-        required: true
-        description: Issue URL (e.g. https://github.com/brave/brave-browser/issues/1)
+        required: false
+        description: Issue number, or URL (e.g. 1, or https://github.com/brave/brave-browser/issues/1)
       comment:
         required: false
         description: Comment (optional)
@@ -25,6 +25,9 @@ jobs:
       advisory: ${{ inputs.advisory }}
       issue: ${{ inputs.issue }}
       comment: ${{ inputs.comment }}
+      issues_url: 'https://github.com/brave/brave-browser/issues'
+      npm_adv_url: 'https://github.com/advisories'
+      cargo_adv_url: 'https://rustsec.org/advisories'
     steps:
       - name: checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -32,41 +35,65 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
       - name: open pr
         run: |
-          # Fail fast
+          ### Fail fast
+
           set -xeEo pipefail
           shopt -s inherit_errexit
 
-          to_json() { printf "%s" "$*"|jq -Rsa .; }
+          ### Process inputs
 
-          case "${advisory:?}" in
-              https://github.com/advisories/GHSA-*|GHSA-*)
-                  ty=npm; advisory_domain=github.com;;
-              https://rustsec.org/advisories/RUSTSEC-*|RUSTSEC-*)
-                  ty=cargo; advisory_domain=rustsec.org;;
-              *) echo "ERROR: invalid advisory format" >&2; exit 2;;
+          case "$issue" in
+              [0-9]*)
+                  issue_url="${issues_url:?}/$issue";;
+              "${issues_url:?}"/[0-9]*)
+                  issue_url="$issue";;
+              "") ;;
+              *) echo "ERROR: invalid issue format: $issue" >&2; exit 2;;
           esac
 
           advisory_id="${advisory##*/}"
-          advisory_url="https://${advisory_domain:?}/advisories/${advisory_id:?}"
-          advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
 
-          case "${issue:?}" in
-              https://github.com/brave/*/issues/[0-9]*)
-                  issue_json='"issue": '"$(to_json "${issue:?}")";;
-              *) echo "ERROR: invalid issue format" >&2; exit 2;;
-          esac
-
-          case "$(tr -d '[:space:]' <<<"$comment")" in
+          case "$advisory" in
+              GHSA-*)
+                  advisory_url="${npm_adv_url:?}/${advisory_id:?}";;
+              "${npm_adv_url:?}"/GHSA-*)
+                  advisory_url="$advisory";;
+              RUSTSEC-*)
+                  advisory_url="${cargo_adv_url:?}/$advisory";;
+              "${cargo_adv_url:?}"/RUSTSEC-*)
+                  advisory_url="$advisory";;
               "") ;;
-              *) comment_json=', "comment": '"$(to_json "$comment")";;
+              *) echo "ERROR: invalid advisory format: $advisory" >&2; exit 2;;
           esac
 
+          case "$issue_url,$advisory" in
+              ,) echo "ERROR: either the advisory, or the issue must be specified" >&2; exit 2;;
+              ,*) issue_title="Audit finding: $advisory_url"
+                  issue_repo="$(cut -d/ -f4-5 <<<"$issues_url")"
+                  issue_url="$(gh -R "${issue_repo:?}" issue list -l bot/type/audit -S "${issue_title:?}" \
+                      --json title,url -q '.[]|select(.title=="'"$issue_title"'").url')";;
+              *,) issue_title="$(gh issue view "$issue_url" --json title -q .title)"
+                  advisory_id="${issue_title##*/}"
+                  advisory_url="${issue_title#Audit finding: }";;
+          esac
+
+          ### Construct the new config.json entry
+
+          to_json() { printf "%s" "$*"|jq -Rsa .; }
+
+          advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
+          issue_json='"issue": '"$(to_json "$issue_url")"
+          [[ ! "$comment" ]] || comment_json=', "comment": '"$(to_json "$comment")"
           json="{ ${advisory_json:?}, ${issue_json:?} $comment_json }"
 
-          # Update config.json
+          ty="$(grep -q '^GHSA' <<<"${advisory_id:?}" && echo npm || echo cargo)"
+
+          ### Update config.json
+
           echo "$(jq -r ".ignore.${ty:?} += [${json:?}]" config.json)" >config.json
 
-          # Create a branch with the updated config.json and a PR based on it
+          ### Create a branch with the updated config.json and a PR based on it
+
           branch="ignore-$advisory_id"
           sha="$(gh api "/repos/${GITHUB_REPOSITORY:?}/git/refs/heads/${DEFAULT_BRANCH:?}"|jq -r .object.sha)"
           gh api --method POST "/repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/${branch:?}" -f sha="${sha:?}"
@@ -76,5 +103,4 @@ jobs:
               --field encoding="base64" \
               --field message="Ignore $advisory_id" \
               --field sha="$(git rev-parse --verify "$DEFAULT_BRANCH:config.json")"
-          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory_id" -b "Resolves $issue"
-
+          gh pr create -B "$DEFAULT_BRANCH" -H "$branch" -t "Ignore $advisory_id" -b "Resolves $issue_url"
