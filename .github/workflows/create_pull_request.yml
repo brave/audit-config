@@ -70,8 +70,8 @@ jobs:
               ,) echo "ERROR: either the advisory, or the issue must be specified" >&2; exit 2;;
               ,*) issue_title="Audit finding: $advisory_url"
                   issue_repo="$(cut -d/ -f4-5 <<<"$issues_url")"
-                  issue_url="$(gh -R "${issue_repo:?}" issue list -l bot/type/audit -S "${issue_title:?}" \
-                      --json title,url -q '.[]|select(.title=="'"$issue_title"'").url')";;
+                  issue_url="$(gh -R "${issue_repo:?}" issue list -A brave-builds -l bot/type/audit \
+                      -S "${issue_title:?}" --json title,url -q '.[]|select(.title=="'"$issue_title"'").url')";;
               *,) issue_title="$(gh issue view "$issue_url" --json title -q .title)"
                   advisory_id="${issue_title##*/}"
                   advisory_url="${issue_title#Audit finding: }";;
