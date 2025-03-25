@@ -16,6 +16,22 @@
       {
         "advisory": "RUSTSEC-2024-0421",
         "issue": "https://github.com/brave/brave-browser/issues/42765"
+      },
+      {
+        "advisory": "RUSTSEC-2024-0344",
+        "issue": "https://github.com/brave/brave-browser/issues/39142"
+      },
+      {
+        "advisory": "RUSTSEC-2024-0344",
+        "issue": "https://github.com/brave/brave-core/security/dependabot/152"
+      },
+      {
+        "advisory": "RUSTSEC-2025-0001",
+        "issue": "https://github.com/brave/brave-core/security/dependabot/148"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-94vh-gphv-8pm8",
+        "issue": "https://github.com/brave/brave-core/security/dependabot/156"
       }
     ],
     "npm": [
