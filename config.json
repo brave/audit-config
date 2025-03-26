@@ -33,10 +33,13 @@
         "advisory": "RUSTSEC-2025-0009",
         "issue": "https://github.com/brave/brave-core/security/dependabot/152"
       },
-
       {
         "advisory": "https://github.com/advisories/GHSA-94vh-gphv-8pm8",
         "issue": "https://github.com/brave/brave-core/security/dependabot/156"
+      },
+      {
+        "advisory": "https://rustsec.org/advisories/RUSTSEC-2024-0436",
+        "issue": "https://github.com/brave/brave-browser/issues/44974"
       }
     ],
     "npm": [
