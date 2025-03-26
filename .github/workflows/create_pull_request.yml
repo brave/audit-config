@@ -40,15 +40,17 @@ jobs:
           set -xeEo pipefail
           shopt -s inherit_errexit
 
+          error() { echo "::error::${1:?}"; echo "$1" >>"${GITHUB_STEP_SUMMARY:?}"; exit 2; }
+
           ### Process inputs
 
           case "$issue" in
               [0-9]*)
                   issue_url="${issues_url:?}/$issue";;
-              "${issues_url:?}"/[0-9]*)
+              "${issues_url:?}"/[0-9]*|https://github.com/brave/*/issues/[0-9]*)
                   issue_url="$issue";;
               "") ;;
-              *) echo "ERROR: invalid issue format: $issue" >&2; exit 2;;
+              *) error "Invalid issue format: $issue";;
           esac
 
           advisory_id="${advisory##*/}"
@@ -63,18 +65,22 @@ jobs:
               "${cargo_adv_url:?}"/RUSTSEC-*)
                   advisory_url="$advisory";;
               "") ;;
-              *) echo "ERROR: invalid advisory format: $advisory" >&2; exit 2;;
+              *) error "Invalid advisory format: $advisory";;
           esac
 
           case "$issue_url,$advisory" in
-              ,) echo "ERROR: either the advisory, or the issue must be specified" >&2; exit 2;;
+              ,) error "Either the advisory, or the issue must be specified";;
               ,*) issue_title="Audit finding: $advisory_url"
                   issue_repo="$(cut -d/ -f4-5 <<<"$issues_url")"
                   issue_url="$(gh -R "${issue_repo:?}" issue list -A brave-builds -l bot/type/audit \
                       -S "${issue_title:?}" --json title,url -q '.[]|select(.title=="'"$issue_title"'").url')";;
-              *,) issue_title="$(gh issue view "$issue_url" --json title -q .title)"
-                  advisory_id="${issue_title##*/}"
-                  advisory_url="${issue_title#Audit finding: }";;
+              *,) if grep -q "^$issues_url" <<<"$issue_url"; then
+                      issue_title="$(gh issue view "$issue_url" --json title -q .title)"
+                      advisory_id="${issue_title##*/}"
+                      advisory_url="${issue_title#Audit finding: }"
+                  else
+                      error "The advisory can only be inferred from brave-browser issues created by brave-builds"
+                  fi;;
           esac
 
           ### Construct the new config.json entry
