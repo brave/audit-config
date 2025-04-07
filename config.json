@@ -83,6 +83,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-m5qc-5hw7-8vg7",
         "issue": "https://github.com/brave/brave-browser/issues/45259"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-2frx-2596-x5r6",
+        "issue": ""
       }
     ],
     "comments": []
