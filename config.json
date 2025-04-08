@@ -41,6 +41,11 @@
         "advisory": "RUSTSEC-2025-0021",
         "issue": "https://github.com/brave/brave-browser/issues/45207",
         "comment": "see https://bravesoftware.slack.com/archives/C7VLGSR55/p1744056912816059?thread_ts=1743770397.337459&cid=C7VLGSR55"
+      },
+      {
+        "advisory": "RUSTSEC-2025-0023",
+        "issue": "https://github.com/brave/brave-browser/issues/45252",
+        "comment": "https://bravesoftware.slack.com/archives/C7VLGSR55/p1744132973248399?thread_ts=1743770397.337459&cid=C7VLGSR55"
       }
     ],
     "npm": [
