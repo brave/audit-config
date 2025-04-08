@@ -47,7 +47,7 @@ jobs:
           case "$issue" in
               [0-9]*)
                   issue_url="${issues_url:?}/$issue";;
-              "${issues_url:?}"/[0-9]*|https://github.com/brave/*/issues/[0-9]*)
+              "${issues_url:?}"/[0-9]*|https://github.com/brave*)
                   issue_url="$issue";;
               "") ;;
               *) error "Invalid issue format: $issue";;
@@ -87,16 +87,17 @@ jobs:
 
           to_json() { printf "%s" "$*"|jq -Rsa .; }
 
-          advisory_json='"advisory": '"$(to_json "${advisory_url:?}")"
+          ty="$(grep -q '^GHSA' <<<"${advisory_id:?}" && echo npm || echo cargo)"
+          advisory_entry="$([[ "${ty:?}" == npm ]] && echo "${advisory_url:?}" || echo "${advisory_id:?}")"
+
+          advisory_json='"advisory": '"$(to_json "${advisory_entry:?}")"
           issue_json='"issue": '"$(to_json "$issue_url")"
           [[ ! "$comment" ]] || comment_json=', "comment": '"$(to_json "$comment")"
           json="{ ${advisory_json:?}, ${issue_json:?} $comment_json }"
 
-          ty="$(grep -q '^GHSA' <<<"${advisory_id:?}" && echo npm || echo cargo)"
-
           ### Update config.json
 
-          echo "$(jq -r ".ignore.${ty:?} += [${json:?}]" config.json)" >config.json
+          echo "$(jq -r ".ignore.$ty += [${json:?}]" config.json)" >config.json
 
           ### Create a branch with the updated config.json and a PR based on it
 
