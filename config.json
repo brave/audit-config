@@ -107,6 +107,10 @@
         "advisory": "https://github.com/advisories/GHSA-3gc7-fjrx-p6mg",
         "issue": "https://github.com/brave/brave-browser/issues/45258",
         "comment": "no fix available yet"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-f46r-rw29-r322",
+        "issue": "https://github.com/brave/brave-browser/issues/45689"
       }
     ],
     "comments": []
