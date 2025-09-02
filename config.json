@@ -51,6 +51,11 @@
         "advisory": "RUSTSEC-2025-0024",
         "issue": "https://github.com/brave/brave-browser/issues/45344",
         "comment": "https://bravesoftware.slack.com/archives/C7VLGSR55/p1744318045887019?thread_ts=1743770397.337459&cid=C7VLGSR55"
+      },
+      {
+        "advisory": "RUSTSEC-2025-0055",
+        "issue": "https://github.com/brave/brave-browser/issues/48893",
+        "comment": "is only ever used in the web assembly build of the skus service"
       }
     ],
     "npm": [
