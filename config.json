@@ -132,6 +132,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-cpq7-6gpm-g9rc",
         "issue": "https://github.com/brave/brave-browser/issues/48640"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj",
+        "issue": "https://github.com/brave/brave-browser/issues/49203"
       }
     ],
     "comments": []
