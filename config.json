@@ -136,6 +136,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-4hjh-wcwx-xvwj",
         "issue": "https://github.com/brave/brave-browser/issues/49203"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-qjqf-7j6f-82c4",
+        "issue": "https://github.com/brave/brave-browser/issues/49295",
+        "comment": "See https://bravesoftware.slack.com/archives/C7VLGSR55/p1757986985411379?thread_ts=1757982273.569489&cid=C7VLGSR55 for triage and analysis"
       }
     ],
     "comments": []
