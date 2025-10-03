@@ -145,6 +145,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-rx8g-88g5-qh64",
         "issue": "https://github.com/brave/brave-browser/issues/49868"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-ffrw-9mx8-89p8",
+        "issue": "https://github.com/brave/brave-browser/issues/49869"
       }
     ],
     "comments": []
