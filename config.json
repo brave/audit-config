@@ -158,6 +158,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-wqch-xfxh-vrr4",
         "issue": "https://github.com/brave/brave-browser/issues/51071"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-554w-wpv2-vw27",
+        "issue": "https://github.com/brave/brave-browser/issues/51109"
       }
     ],
     "comments": []
