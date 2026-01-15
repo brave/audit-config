@@ -172,6 +172,10 @@
         "advisory": "https://github.com/advisories/GHSA-848j-6mx2-7j84",
         "issue": "https://github.com/brave/brave-browser/issues/51895",
         "comment": "We do not perform signing with this library, so should not block builds. It should be bumped still, but to keep trains moving we can ignore for now."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx",
+        "issue": "https://github.com/brave/brave-browser/issues/52000"
       }
     ],
     "comments": []
