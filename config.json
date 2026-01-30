@@ -176,6 +176,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx",
         "issue": "https://github.com/brave/brave-browser/issues/52000"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-p5wg-g6qr-c7cg",
+        "issue": "https://github.com/brave/brave-browser/issues/52398",
+        "comment": "temporary per https://bravesoftware.slack.com/archives/C7VLGSR55/p1769785994683619?thread_ts=1769707476.680959&cid=C7VLGSR55; also maybe not exploitable?"
       }
     ],
     "comments": []
