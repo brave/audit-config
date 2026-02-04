@@ -61,6 +61,11 @@
         "advisory": "RUSTSEC-2025-0140",
         "issue": "https://github.com/brave/brave-browser/issues/51756",
         "comment": "https://bravesoftware.slack.com/archives/C7VLGSR55/p1767708417176839?thread_ts=1767572727.576149&cid=C7VLGSR55"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0007",
+        "issue": "https://github.com/brave/brave-browser/issues/52535",
+        "comment": "temporary while waiting for upstream to address; https://bravesoftware.slack.com/archives/C3VPDGVB2/p1770163792222409?thread_ts=1770152011.010049&cid=C3VPDGVB2"
       }
     ],
     "npm": [
@@ -181,11 +186,6 @@
         "advisory": "https://github.com/advisories/GHSA-p5wg-g6qr-c7cg",
         "issue": "https://github.com/brave/brave-browser/issues/52398",
         "comment": "temporary per https://bravesoftware.slack.com/archives/C7VLGSR55/p1769785994683619?thread_ts=1769707476.680959&cid=C7VLGSR55; also maybe not exploitable?"
-      },
-      {
-        "advisory": "https://github.com/advisories/GHSA-434x-w66g-qw3r",
-        "issue": "https://github.com/brave/brave-browser/issues/52535",
-        "comment": "temporary while waiting for upstream to address"
       }
     ],
     "comments": []
