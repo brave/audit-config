@@ -217,6 +217,11 @@
         "advisory": "https://github.com/advisories/GHSA-m56q-vw4c-c2cp",
         "issue": "https://github.com/brave/brave-browser/issues/52993",
         "comment": "brave-core does not use server-side rendering"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-crpf-4hrx-3jrp",
+        "issue": "https://github.com/brave/brave-browser/issues/53013",
+        "comment": "brave-core does not use server-side rendering"
       }
     ],
     "comments": []
