@@ -222,6 +222,10 @@
         "advisory": "https://github.com/advisories/GHSA-crpf-4hrx-3jrp",
         "issue": "https://github.com/brave/brave-browser/issues/53013",
         "comment": "brave-core does not use server-side rendering"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-378v-28hj-76wf",
+        "issue": "https://github.com/brave/brave-browser/issues/53048"
       }
     ],
     "comments": []
