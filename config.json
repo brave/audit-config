@@ -234,6 +234,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
         "issue": "https://github.com/brave/brave-browser/issues/53182"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-phwv-c562-gvmh",
+        "issue": "https://github.com/brave/brave-browser/issues/53184",
+        "comment": "SSR not used"
       }
     ],
     "comments": []
