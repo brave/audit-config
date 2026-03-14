@@ -255,6 +255,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-25h7-pfq9-p65f",
         "issue": "https://github.com/brave/brave-browser/issues/53608"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-2mjp-6q6p-2qxm",
+        "issue": "https://github.com/brave/brave-browser/issues/53648"
       }
     ],
     "comments": []
