@@ -259,6 +259,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-gmq8-994r-jv83",
         "issue": "https://github.com/brave/brave-browser/issues/53653"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-677m-j7p3-52f9",
+        "issue": "https://github.com/brave/brave-browser/issues/53777"
       }
     ],
     "comments": []
