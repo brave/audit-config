@@ -299,6 +299,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-2v35-w6hq-6mfw",
         "issue": "https://github.com/brave/brave-browser/issues/54872"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-v39h-62p7-jpjc",
+        "issue": "https://github.com/brave/brave-browser/issues/55388"
       }
     ],
     "comments": []
