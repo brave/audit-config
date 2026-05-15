@@ -320,6 +320,11 @@
         "advisory": "https://github.com/advisories/GHSA-pr6f-5x2q-rwfp",
         "issue": "https://github.com/brave/brave-browser/issues/55538",
         "comment": "SSR not used"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-rcqx-6q8c-2c42",
+        "issue": "https://github.com/brave/brave-browser/issues/55539",
+        "comment": "https://bravesoftware.slack.com/archives/C7VLGSR55/p1778810466833949?thread_ts=1778804914.499019&cid=C7VLGSR55"
       }
     ],
     "comments": []
