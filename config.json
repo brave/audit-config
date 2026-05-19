@@ -325,6 +325,10 @@
         "advisory": "https://github.com/advisories/GHSA-rcqx-6q8c-2c42",
         "issue": "https://github.com/brave/brave-browser/issues/55539",
         "comment": "https://bravesoftware.slack.com/archives/C7VLGSR55/p1778810466833949?thread_ts=1778804914.499019&cid=C7VLGSR55"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-58qx-3vcg-4xpx",
+        "issue": "https://github.com/brave/brave-browser/issues/55621"
       }
     ],
     "comments": []
