@@ -333,6 +333,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-jggg-4jg4-v7c6",
         "issue": "https://github.com/brave/brave-browser/issues/55644"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-q8mj-m7cp-5q26",
+        "issue": "https://github.com/brave/brave-browser/issues/55767"
       }
     ],
     "comments": []
