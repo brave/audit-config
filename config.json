@@ -341,6 +341,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-ph9p-34f9-6g65",
         "issue": "https://github.com/brave/brave-browser/issues/55852"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-9h5v-pfqq-x599",
+        "issue": "https://github.com/brave/brave-browser/issues/56412"
       }
     ],
     "comments": []
