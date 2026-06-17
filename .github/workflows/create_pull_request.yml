@@ -106,7 +106,7 @@ jobs:
 
           ### Create a branch with the updated config.json and a PR based on it
 
-          branch="ignore-$advisory_id"
+          branch="ignore-$advisory_id-$(date +%s)"
           sha="$(gh api "/repos/${GITHUB_REPOSITORY:?}/git/refs/heads/${DEFAULT_BRANCH:?}"|jq -r .object.sha)"
           gh api --method POST "/repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/heads/${branch:?}" -f sha="${sha:?}"
           gh api --method PUT "/repos/$GITHUB_REPOSITORY/contents/config.json" \
