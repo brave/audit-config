@@ -111,6 +111,10 @@
       {
         "advisory": "RUSTSEC-2026-0186",
         "issue": "https://github.com/brave/brave-browser/issues/56575"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0190",
+        "issue": "https://github.com/brave/brave-browser/issues/56834"
       }
     ],
     "npm": [
