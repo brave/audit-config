@@ -397,6 +397,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-xvcm-6775-5m9r",
         "issue": "https://github.com/brave/brave-browser/issues/57405"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-v56q-mh7h-f735",
+        "issue": "https://github.com/brave/brave-browser/issues/57404"
       }
     ],
     "comments": []
