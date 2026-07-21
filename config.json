@@ -381,6 +381,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-52cp-r559-cp3m",
         "issue": "https://github.com/brave/brave-browser/issues/57379"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-395f-4hp3-45gv",
+        "issue": "https://github.com/brave/brave-browser/issues/57381"
       }
     ],
     "comments": []
