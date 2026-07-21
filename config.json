@@ -377,6 +377,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-xcpc-8h2w-3j85",
         "issue": "https://github.com/brave/brave-browser/issues/57307"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+        "issue": "https://github.com/brave/brave-browser/issues/57378"
       }
     ],
     "comments": []
