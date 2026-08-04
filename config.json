@@ -407,11 +407,6 @@
         "issue": "https://github.com/brave/brave-browser/issues/57403"
       },
       {
-        "advisory": "https://github.com/advisories/GHSA-v2hh-gcrm-f6hx",
-        "issue": "https://github.com/brave/brave-browser/issues/57414",
-        "comment": "TODO: remove this after overriding fast-uri in brave-core and wdp"
-      },
-      {
         "advisory": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
         "issue": "https://github.com/brave/brave-browser/issues/57527"
       },
