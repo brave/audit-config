@@ -414,6 +414,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
         "issue": "https://github.com/brave/brave-browser/issues/57527"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+        "issue": "https://github.com/brave/brave-browser/issues/57807"
       }
     ],
     "comments": []
