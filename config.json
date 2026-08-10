@@ -413,6 +413,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
         "issue": "https://github.com/brave/brave-browser/issues/57807"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj",
+        "issue": "https://github.com/brave/brave-browser/issues/57926"
       }
     ],
     "comments": []
