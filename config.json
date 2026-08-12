@@ -127,6 +127,11 @@
       {
         "advisory": "RUSTSEC-2026-0202",
         "issue": "https://github.com/brave/brave-browser/issues/56940"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0097",
+        "issue": "https://github.com/brave/brave-browser/issues/58003",
+        "comment": "leads to a panic failure rather than a warn when rand can't seed. This is non-blocking for now as we've not seen RNG seed failures, but working on updating still"
       }
     ],
     "npm": [
@@ -413,6 +418,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
         "issue": "https://github.com/brave/brave-browser/issues/57807"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj",
+        "issue": "https://github.com/brave/brave-browser/issues/57926"
       },
       {
         "advisory": "https://github.com/advisories/GHSA-w3rx-r6r6-pgpr",
