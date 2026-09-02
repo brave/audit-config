@@ -276,6 +276,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-c83g-rgw3-j3cx",
         "issue": "https://github.com/brave/brave-browser/issues/58611"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-vx52-2968-3vc6",
+        "issue": "https://github.com/brave/brave-browser/issues/58613"
       }
     ],
     "comments": []
