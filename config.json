@@ -288,6 +288,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-w9m9-85wc-3x92",
         "issue": "https://github.com/brave/brave-browser/issues/58623"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-x5fp-wj9c-mxmx",
+        "issue": "https://github.com/brave/brave-browser/issues/58639"
       }
     ],
     "comments": []
