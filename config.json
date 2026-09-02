@@ -280,6 +280,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-vx52-2968-3vc6",
         "issue": "https://github.com/brave/brave-browser/issues/58613"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-73wf-gq98-2v4g",
+        "issue": "https://github.com/brave/brave-browser/issues/58612"
       }
     ],
     "comments": []
