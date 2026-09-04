@@ -296,6 +296,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-4mjr-xmp4-gh2g",
         "issue": "https://github.com/brave/brave-browser/issues/58640"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-528h-pc64-c93x",
+        "issue": "https://github.com/brave/brave-browser/issues/58720"
       }
     ],
     "comments": []
