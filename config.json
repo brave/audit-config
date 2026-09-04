@@ -300,6 +300,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-528h-pc64-c93x",
         "issue": "https://github.com/brave/brave-browser/issues/58720"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-82x6-q7mm-w9cf",
+        "issue": "https://github.com/brave/brave-browser/issues/58721"
       }
     ],
     "comments": []
