@@ -308,6 +308,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-2883-xcg3-v3hh",
         "issue": "https://github.com/brave/brave-browser/issues/58828"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-vwc7-r8mq-g2x9",
+        "issue": "https://github.com/brave/brave-browser/issues/58829",
+        "comment": "no fix"
       }
     ],
     "comments": []
