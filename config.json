@@ -322,6 +322,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-9rgm-9g3h-6x36",
         "issue": "https://github.com/brave/brave-browser/issues/59133"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-7q85-xj36-vmfc",
+        "issue": "https://github.com/brave/brave-browser/issues/59174"
       }
     ],
     "comments": []
