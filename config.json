@@ -326,6 +326,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-7q85-xj36-vmfc",
         "issue": "https://github.com/brave/brave-browser/issues/59174"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-3wwx-pv8p-q78v",
+        "issue": "https://github.com/brave/brave-browser/issues/59418"
       }
     ],
     "comments": []
