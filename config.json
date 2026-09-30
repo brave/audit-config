@@ -330,6 +330,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-3wwx-pv8p-q78v",
         "issue": "https://github.com/brave/brave-browser/issues/59418"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p",
+        "issue": "https://github.com/brave/brave-browser/issues/59494"
       }
     ],
     "comments": []
