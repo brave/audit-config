@@ -330,6 +330,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-3wwx-pv8p-q78v",
         "issue": "https://github.com/brave/brave-browser/issues/59418"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-86w9-cpqp-85rv",
+        "issue": "https://github.com/brave/brave-browser/issues/59584",
+        "comment": "No patched node-forge release exists yet (1.4.0 is the latest); currently flagged in web-discovery-project devDependencies only."
       }
     ],
     "comments": []
