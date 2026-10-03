@@ -335,6 +335,11 @@
         "advisory": "https://github.com/advisories/GHSA-86w9-cpqp-85rv",
         "issue": "https://github.com/brave/brave-browser/issues/59584",
         "comment": "No patched node-forge release exists yet (1.4.0 is the latest); currently flagged in web-discovery-project devDependencies only."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+        "issue": "https://github.com/brave/brave-browser/issues/59652",
+        "comment": "No patched braces release exists (3.0.3 is latest); flagged in leo, WDP, and brave-core via build-time-only chokidar/tailwindcss glob paths."
       }
     ],
     "comments": []
