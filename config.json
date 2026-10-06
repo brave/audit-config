@@ -348,6 +348,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q",
         "issue": "https://github.com/brave/brave-browser/issues/59714"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+        "issue": "https://github.com/brave/brave-browser/issues/59712"
       }
     ],
     "comments": []
