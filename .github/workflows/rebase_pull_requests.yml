@@ -71,7 +71,11 @@ jobs:
               ### Commit onto a scratch branch first, so that the PR branch only
               ### ever points at a complete commit
 
-              tmp="rebase/$branch"
+              tmp="rebase/${GITHUB_RUN_ID:?}-${GITHUB_RUN_ATTEMPT:?}/$branch"
+              cleanup_tmp() {
+                  gh api --method DELETE "/repos/$repo/git/refs/heads/$tmp" >/dev/null 2>&1 || true
+              }
+              trap cleanup_tmp EXIT
               gh api --method POST "/repos/$repo/git/refs" \
                   -f ref="refs/heads/${tmp:?}" -f sha="${base_sha:?}"
               new_sha="$(gh api --method PUT "/repos/$repo/contents/config.json" \
@@ -82,5 +86,6 @@ jobs:
                   --field sha="${base_blob:?}" -q .commit.sha)"
               gh api --method PATCH "/repos/$repo/git/refs/heads/${branch:?}" \
                   -f sha="${new_sha:?}" -F force=true
-              gh api --method DELETE "/repos/$repo/git/refs/heads/$tmp"
+              cleanup_tmp
+              trap - EXIT
           done <prs.tsv
