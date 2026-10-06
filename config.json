@@ -344,6 +344,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-gjj5-9665-rwrc",
         "issue": "https://github.com/brave/brave-browser/issues/59665"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+        "issue": "https://github.com/brave/brave-browser/issues/59712"
       }
     ],
     "comments": []
