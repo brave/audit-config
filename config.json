@@ -348,6 +348,22 @@
       {
         "advisory": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
         "issue": "https://github.com/brave/brave-browser/issues/59712"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q",
+        "issue": "https://github.com/brave/brave-browser/issues/59714"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+        "issue": "https://github.com/brave/brave-browser/issues/59715"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-hqr4-qq8f-hg3x",
+        "issue": "https://github.com/brave/brave-browser/issues/59716"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-vc2v-76pw-4v95",
+        "issue": "https://github.com/brave/brave-browser/issues/59719"
       }
     ],
     "comments": []
