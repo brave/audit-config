@@ -146,6 +146,11 @@
         "advisory": "RUSTSEC-9999-0001",
         "issue": "https://github.com/brave/brave-browser/issues/99999",
         "comment": "GLM test A"
+      },
+      {
+        "advisory": "RUSTSEC-9999-0003",
+        "issue": "https://github.com/brave/brave-browser/issues/99999",
+        "comment": "GLM test C advance"
       }
     ],
     "npm": [
