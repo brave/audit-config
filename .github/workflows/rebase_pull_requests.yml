@@ -39,7 +39,7 @@ jobs:
           gh api "/repos/$repo/contents/config.json?ref=$base_sha" \
               -H 'Accept: application/vnd.github.raw' >base.json
 
-          gh pr list -R "$repo" -B "$base" -L 100 \
+          gh pr list -R "$repo" -B "$base" -L 1000 \
               --json number,title,headRefName,headRefOid,isCrossRepository \
               -q '.[]|select(.isCrossRepository == false
                   and (.headRefName|startswith("ignore-")))
@@ -50,23 +50,31 @@ jobs:
 
               ### Skip the PRs that already contain the tip of the base branch
 
-              [[ "$(gh api "/repos/$repo/compare/$base_sha...$head" -q .behind_by)" != 0 ]] || continue
+              compare="$(gh api "/repos/$repo/compare/$base_sha...$head" \
+                  -q '"\(.behind_by) \(.merge_base_commit.sha)"')"
+              [[ "${compare%% *}" != 0 ]] || continue
 
               gh api "/repos/$repo/contents/config.json?ref=$head" \
                   -H 'Accept: application/vnd.github.raw' >pr.json
+              gh api "/repos/$repo/contents/config.json?ref=${compare##* }" \
+                  -H 'Accept: application/vnd.github.raw' >old.json
 
-              ### Re-apply the entries the PR adds, on top of the base branch
+              ### Take the entries the PR itself adds, so that one since edited or
+              ### dropped on the base branch is not resurrected, less the ones the
+              ### base branch already lists, so that one that landed by another
+              ### route is not duplicated
 
-              filter='($base[0].ignore) as $b|($pr[0].ignore) as $p|'
-              added="$(jq -n --slurpfile base base.json --slurpfile pr pr.json \
-                  "$filter"'(($p.cargo-$b.cargo)+($p.npm-$b.npm))|length')"
-              if [[ "$added" == 0 ]]; then
+              filter='($old[0].ignore) as $o|($base[0].ignore) as $b|($pr[0].ignore) as $p|
+                  (($p.cargo-$o.cargo)-$b.cargo) as $cargo|
+                  (($p.npm-$o.npm)-$b.npm) as $npm|'
+              jq_args=(-n --slurpfile old old.json --slurpfile base base.json --slurpfile pr pr.json)
+              if [[ "$(jq "${jq_args[@]}" "$filter"'($cargo+$npm)|length')" == 0 ]]; then
                   echo "::warning::#$number adds nothing to config.json, skipping"
                   continue
               fi
-              jq -n --slurpfile base base.json --slurpfile pr pr.json "$filter"'$base[0]
-                  |.ignore.cargo+=($p.cargo-$b.cargo)
-                  |.ignore.npm+=($p.npm-$b.npm)' >new.json
+              jq "${jq_args[@]}" "$filter"'$base[0]
+                  |.ignore.cargo+=$cargo
+                  |.ignore.npm+=$npm' >new.json
 
               ### Commit onto a scratch branch first, so that the PR branch only
               ### ever points at a complete commit
