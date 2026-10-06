@@ -39,8 +39,10 @@ jobs:
           gh api "/repos/$repo/contents/config.json?ref=$base_sha" \
               -H 'Accept: application/vnd.github.raw' >base.json
 
-          gh pr list -R "$repo" -B "$base" -L 100 --json number,title,headRefName,headRefOid \
-              -q '.[]|select(.headRefName|startswith("ignore-"))
+          gh pr list -R "$repo" -B "$base" -L 100 \
+              --json number,title,headRefName,headRefOid,isCrossRepository \
+              -q '.[]|select(.isCrossRepository == false
+                  and (.headRefName|startswith("ignore-")))
                   |[.number,.headRefName,.headRefOid,.title]|@tsv' >prs.tsv
 
           while IFS=$'\t' read -r number branch head title; do
