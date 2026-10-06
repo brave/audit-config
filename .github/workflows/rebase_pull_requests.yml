@@ -1,0 +1,84 @@
+name: Rebase PRs
+
+on:
+  push:
+    branches: [main]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  contents: write
+  pull-requests: read
+
+# Serialise, so that two pushes in quick succession cannot race on the same
+# pull request branch.
+concurrency:
+  group: rebase-pull-requests
+  cancel-in-progress: false
+
+jobs:
+  rebase:
+    name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: rebase open ignore PRs
+        run: |
+          ### Fail fast
+
+          set -xeEo pipefail
+          shopt -s inherit_errexit
+
+          repo="${GITHUB_REPOSITORY:?}"
+          base="${GITHUB_REF_NAME:?}"
+
+          ### The state to rebase onto
+
+          base_sha="$(gh api "/repos/$repo/git/refs/heads/$base" -q .object.sha)"
+          base_blob="$(gh api "/repos/$repo/contents/config.json?ref=$base_sha" -q .sha)"
+          gh api "/repos/$repo/contents/config.json?ref=$base_sha" \
+              -H 'Accept: application/vnd.github.raw' >base.json
+
+          gh pr list -R "$repo" -B "$base" -L 100 --json number,title,headRefName,headRefOid \
+              -q '.[]|select(.headRefName|startswith("ignore-"))
+                  |[.number,.headRefName,.headRefOid,.title]|@tsv' >prs.tsv
+
+          while IFS=$'\t' read -r number branch head title; do
+              [[ "$number" ]] || continue
+
+              ### Skip the PRs that already contain the tip of the base branch
+
+              [[ "$(gh api "/repos/$repo/compare/$base_sha...$head" -q .behind_by)" != 0 ]] || continue
+
+              gh api "/repos/$repo/contents/config.json?ref=$head" \
+                  -H 'Accept: application/vnd.github.raw' >pr.json
+
+              ### Re-apply the entries the PR adds, on top of the base branch
+
+              filter='($base[0].ignore) as $b|($pr[0].ignore) as $p|'
+              added="$(jq -n --slurpfile base base.json --slurpfile pr pr.json \
+                  "$filter"'(($p.cargo-$b.cargo)+($p.npm-$b.npm))|length')"
+              if [[ "$added" == 0 ]]; then
+                  echo "::warning::#$number adds nothing to config.json, skipping"
+                  continue
+              fi
+              jq -n --slurpfile base base.json --slurpfile pr pr.json "$filter"'$base[0]
+                  |.ignore.cargo+=($p.cargo-$b.cargo)
+                  |.ignore.npm+=($p.npm-$b.npm)' >new.json
+
+              ### Commit onto a scratch branch first, so that the PR branch only
+              ### ever points at a complete commit
+
+              tmp="rebase/$branch"
+              gh api --method POST "/repos/$repo/git/refs" \
+                  -f ref="refs/heads/${tmp:?}" -f sha="${base_sha:?}"
+              new_sha="$(gh api --method PUT "/repos/$repo/contents/config.json" \
+                  --field branch="$tmp" \
+                  --field content="$(base64 -w0 <new.json)" \
+                  --field encoding="base64" \
+                  --field message="${title:?}" \
+                  --field sha="${base_blob:?}" -q .commit.sha)"
+              gh api --method PATCH "/repos/$repo/git/refs/heads/${branch:?}" \
+                  -f sha="${new_sha:?}" -F force=true
+              gh api --method DELETE "/repos/$repo/git/refs/heads/$tmp"
+          done <prs.tsv
