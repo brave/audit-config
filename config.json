@@ -177,6 +177,21 @@
       {
         "advisory": "RUSTSEC-2026-0381",
         "issue": "https://github.com/brave/brave-browser/issues/60084"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0367",
+        "issue": "https://github.com/brave/brave-browser/issues/60027",
+        "comment": "not reachable: zip 2.4.2 is pulled in only by binary-install (via wasm-pack), whose extract_zip() iterates entries with by_index() instead of calling the affected ZipArchive::extract(), and writes files with a hardcoded mode of 0o755 without ever reading the archive's unix_mode(), so SUID/SGID bits cannot be preserved. binary-install 0.4.1 is the latest release and pins zip ^2.1.3, so there is no upstream path to the patched 9.0.0"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0368",
+        "issue": "https://github.com/brave/brave-browser/issues/60025",
+        "comment": "not reachable: binary-install's extract_zip() (sole consumer of zip, via wasm-pack) never calls the affected ZipArchive::extract() and only writes regular files via io::copy, so it creates no symlinks; entry paths are additionally confined with enclosed_name(). Blocked on binary-install 0.4.1 pinning zip ^2.1.3"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0369",
+        "issue": "https://github.com/brave/brave-browser/issues/60026",
+        "comment": "not reachable: binary-install's extract_zip() (sole consumer of zip, via wasm-pack) uses neither affected API (ZipStreamReader::extract / ZipArchive::extract), creates no symlinks, and applies no archive-derived permissions. Blocked on binary-install 0.4.1 pinning zip ^2.1.3"
       }
     ],
     "npm": [
