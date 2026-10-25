@@ -419,6 +419,22 @@
       {
         "advisory": "https://github.com/advisories/GHSA-477h-4r7f-fvrx",
         "issue": ""
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-4qx8-w7c3-pj3p",
+        "comment": "DoS only (quadratic TOML parsing); pulled in via Trezor's Stellar SDK. The patched toml 5.0.1 is a major upgrade from our pinned 4.3.0."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-9j65-hcg3-gc64",
+        "comment": "DoS only (quadratic TOML parsing of dotted keys); pulled in via Trezor's Stellar SDK. The patched toml 5.0.1 is a major upgrade from our pinned 4.3.0."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-9qmh-m7c6-f92p",
+        "comment": "DoS only (CPU exhaustion from oversized TOML integers); pulled in via Trezor's Stellar SDK. The patched toml 5.0.1 is a major upgrade from our pinned 4.3.0."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+        "comment": "DoS only; zod is pulled in solely by eslint-plugin-react-hooks for development-time linting, not browser runtime code."
       }
     ],
     "comments": []
