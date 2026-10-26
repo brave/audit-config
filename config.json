@@ -192,6 +192,22 @@
         "advisory": "RUSTSEC-2026-0369",
         "issue": "https://github.com/brave/brave-browser/issues/60026",
         "comment": "not reachable: binary-install's extract_zip() (sole consumer of zip, via wasm-pack) uses neither affected API (ZipStreamReader::extract / ZipArchive::extract), creates no symlinks, and applies no archive-derived permissions. Blocked on binary-install 0.4.1 pinning zip ^2.1.3"
+      },
+      {
+        "advisory": "RUSTSEC-2026-0391",
+        "comment": "not reachable: zstd 0.13.3 is pulled in only by zip 2.4.2 via binary-install/wasm-pack in tools/crates. zip uses zstd::Decoder::with_buffer(), which creates a fresh context, not the affected raw Encoder/Decoder::with_context() constructors that reuse an abandoned context."
+      },
+      {
+        "advisory": "RUSTSEC-2026-0403",
+        "comment": "not reachable: zstd-safe 7.2.4 is used only by zip via binary-install/wasm-pack in tools/crates. zip uses zstd's read::Decoder, not the affected write::Decoder, and zip disables zstd default features including legacy-frame support."
+      },
+      {
+        "advisory": "RUSTSEC-2026-0398",
+        "comment": "not reachable: zstd-safe 7.2.4 is pulled in only by zip via binary-install/wasm-pack in tools/crates; its seekable feature is not enabled, so the affected Seekable::decompress APIs are not compiled."
+      },
+      {
+        "advisory": "RUSTSEC-2026-0410",
+        "comment": "not reachable: zstd-sys 2.0.16 is pulled in only by zip via binary-install/wasm-pack in tools/crates. The vulnerable allocator shim is wasm32-only, whereas wasm-pack is a host CLI tool and its ZIP extraction runs on the host."
       }
     ],
     "npm": [
