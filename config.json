@@ -451,6 +451,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
         "comment": "DoS only; zod is pulled in solely by eslint-plugin-react-hooks for development-time linting, not browser runtime code."
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw",
+        "issue": "https://github.com/brave/brave-browser/issues/60219"
       }
     ],
     "comments": []
