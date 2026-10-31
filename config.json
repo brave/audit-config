@@ -459,6 +459,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
         "issue": "https://github.com/brave/brave-browser/issues/60220"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-h6cr-wjv9-3cpp",
+        "issue": "https://github.com/brave/brave-browser/issues/60373"
       }
     ],
     "comments": []
