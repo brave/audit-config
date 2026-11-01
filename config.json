@@ -459,6 +459,11 @@
       {
         "advisory": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
         "issue": "https://github.com/brave/brave-browser/issues/60220"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+        "issue": "https://github.com/brave/brave-browser/issues/60367",
+        "comment": "Dev-only lint/test tooling chains (eslint/typescript-eslint/jest) in leo, WDP, and brave-core; no direct usage. Patched minimatch 11.0.1 is a major with no compatible consumers (test-exclude@7, glob@10); no safe upgrade path."
       }
     ],
     "comments": []
