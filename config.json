@@ -485,6 +485,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-7wch-p9px-956x",
         "issue": "https://github.com/brave/brave-browser/issues/60372"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+        "issue": "https://github.com/brave/brave-browser/issues/60367"
       }
     ],
     "comments": []
