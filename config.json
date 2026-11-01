@@ -481,6 +481,10 @@
       {
         "advisory": "https://github.com/advisories/GHSA-8hrf-8g6f-7xwp",
         "issue": "https://github.com/brave/brave-browser/issues/60377"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-7wch-p9px-956x",
+        "issue": "https://github.com/brave/brave-browser/issues/60372"
       }
     ],
     "comments": []
