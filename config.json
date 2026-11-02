@@ -208,6 +208,10 @@
       {
         "advisory": "RUSTSEC-2026-0410",
         "comment": "not reachable: zstd-sys 2.0.16 is pulled in only by zip via binary-install/wasm-pack in tools/crates. The vulnerable allocator shim is wasm32-only, whereas wasm-pack is a host CLI tool and its ZIP extraction runs on the host."
+      },
+      {
+        "advisory": "RUSTSEC-2026-0429",
+        "issue": "https://github.com/brave/brave-browser/issues/60408"
       }
     ],
     "npm": [
