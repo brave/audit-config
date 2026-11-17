@@ -523,6 +523,10 @@
         "advisory": "https://github.com/advisories/GHSA-fc5q-39xc-vjpf",
         "issue": "",
         "comment": "DoS"
+      },
+      {
+        "advisory": "https://github.com/advisories/GHSA-4487-j8r4-4g2f",
+        "issue": "https://github.com/brave/brave-browser/issues/60452"
       }
     ],
     "comments": []
